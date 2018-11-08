@@ -55,7 +55,8 @@ class App extends Component {
   }
 
   calculateFaceLocation = (data) => {
-    return data.outputs[0].data.regions.map((region) => {
+    // ternary protects against error caused by no regions being given
+    return (!data.outputs[0].data.regions) ? [] : data.outputs[0].data.regions.map((region) => {
       const clarifaiFace = region.region_info.bounding_box;
       const image = document.getElementById('inputimage');
       const width = Number(image.width);
@@ -81,6 +82,10 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
+
+    // TODO: Check if imageUrl is a legitimate url
+    // ex. if it starts with "data" instead of "http" then it's the wrong protocol
+
     fetch('http://localhost:3000/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
