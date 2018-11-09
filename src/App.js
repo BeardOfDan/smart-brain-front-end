@@ -86,7 +86,7 @@ class App extends Component {
     // TODO: Check if imageUrl is a legitimate url
     // ex. if it starts with "data" instead of "http" then it's the wrong protocol
 
-    fetch('http://localhost:3000/imageurl', {
+    fetch('http://192.168.99.100:3000/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -96,7 +96,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3000/image', {
+          fetch('http://192.168.99.100:3000/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
