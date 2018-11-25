@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
+import Modal from './components/Modal/Modal';
 import './App.css';
 
 const particlesOptions = {
@@ -135,6 +136,9 @@ class App extends Component {
         {route === 'home'
           ? <div>
             <Logo />
+            <Modal>
+              {'hello'}
+            </Modal>
             <Rank
               name={this.state.user.name}
               entries={this.state.user.entries}
